@@ -6,7 +6,7 @@ class MnistMLP(nn.Module):
 
     def __init__(self):
         super().__init__()
-        self.layers = nn.Sequential(nn.Linear(784, 100), nn.ReLU(), nn.Linear(100, 10))
+        self.layers = nn.Sequential(nn.Linear(784, 500), nn.ReLU(), nn.Linear(500, 10))
 
     def forward(self, x):
         x = x.view(x.size(0), -1)

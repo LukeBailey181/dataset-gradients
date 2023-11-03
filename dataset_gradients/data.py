@@ -30,7 +30,7 @@ class RandomMemorySetManager(MemorySetManager):
     def create_memory_set(
         self, x: Float[Tensor, "n f"], y: Float[Tensor, "n 1"]
     ) -> Tuple[Float[Tensor, "m f"], Float[Tensor, "m 1"]]:
-        memory_set_size = x.shape[0] * self.p
+        memory_set_size = int(x.shape[0] * self.p)
         # Select memeory set random elements from x and y, without replacement
         memory_set_indices = torch.randperm(x.shape[0], generator=self.generator)[
             :memory_set_size

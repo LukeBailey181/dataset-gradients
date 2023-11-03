@@ -1,8 +1,11 @@
-from data import MnistManager, RandomMemorySetManager
+from data import RandomMemorySetManager
+from continual_learning import MnistManager
 import wandb
 
 # TODO add proper config files
-USE_WANDB = False
+USE_WANDB = True
+EPOCHS = 500
+LR = 0.1
 
 
 def main():
@@ -25,11 +28,11 @@ def main():
     )
 
     # Train on first task
-    mnist_manager.train()
+    mnist_manager.train(epochs=EPOCHS, lr=LR)
 
     # Train on second task
     mnist_manager.next_task()
-    mnist_manager.train()
+    mnist_manager.train(epochs=EPOCHS, lr=LR)
 
 
 if __name__ == "__main__":
